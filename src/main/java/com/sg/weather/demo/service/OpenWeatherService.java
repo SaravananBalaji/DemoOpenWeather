@@ -33,7 +33,7 @@ public class OpenWeatherService {
         this.weatherService = weatherService;
     }
 
-    public WeatherResponse getWeatherReport(String countryName, String countryCode, String apiName) {
+    public WeatherResponse getWeatherReport(String countryName, String city, String apiName) {
         validateRequiredFields(countryName, apiName);
 
         var apiKeyOptional = apiKeyRepository.findByApiName(apiName);
@@ -51,7 +51,7 @@ public class OpenWeatherService {
         try {
             openWeatherResponse = openWeatherClient.getWeatherReport(
                     countryName
-                    , countryCode
+                    , city
                     , apiKey.getApiKey());
             log.info("Open Weather response: {}", openWeatherResponse);
 

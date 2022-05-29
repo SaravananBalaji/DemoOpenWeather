@@ -33,9 +33,9 @@ public class WeatherController {
     @GetMapping(API_GET_WEATHER)
     public ResponseEntity<WeatherResponse> getWeather(
             @RequestParam(value = "countryName", required = false) String countryName,
-            @RequestParam(value = "countryCode", required = false) String countryCode,
+            @RequestParam(value = "city", required = false) String city,
             @RequestParam(value = "apiName", required = false) @NonNull String apiName) {
-        var weatherResponse = openWeatherService.getWeatherReport(countryName, countryCode, apiName);
+        var weatherResponse = openWeatherService.getWeatherReport(countryName, city, apiName);
         return ResponseEntity.ok(weatherResponse);
     }
 }

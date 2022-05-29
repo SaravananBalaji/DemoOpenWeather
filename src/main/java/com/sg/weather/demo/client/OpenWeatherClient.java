@@ -25,14 +25,14 @@ public class OpenWeatherClient {
         this.restTemplate = restTemplate;
     }
 
-    public OpenWeatherResponse getWeatherReport(String countryName, String countryCode, String apiKey) {
+    public OpenWeatherResponse getWeatherReport(String countryName, String city, String apiKey) {
         List<String> searchParamList = new ArrayList<>();
+
+        if (StringUtils.isNotEmpty(city)) {
+            searchParamList.add(city);
+        }
         if (StringUtils.isNotEmpty(countryName)) {
             searchParamList.add(countryName);
-        }
-
-        if (StringUtils.isNotEmpty(countryCode)) {
-            searchParamList.add(countryCode);
         }
         String searchParam = String.join(",", searchParamList);
 
